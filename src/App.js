@@ -21,6 +21,7 @@ import DisclaimerFooter from "./DisclaimerFooter";
 
 const QUEUE_STORAGE_KEY = "queue";
 
+
 // getInitialState gives us the initial state
 // for the queueReducer. Since we are using localStorage
 // we need to check to see if anything is there first
@@ -43,9 +44,13 @@ const queueReducer = (state, action) => {
     case "ADD":
       return [...state, { id: action.id, movieId: action.movieId }];
     case "DELETE":
-      console.log("delete", action);
-      //state.filter(comment => comment.id !== commentId);
       return [...state.filter(queue => queue.id !== action.id)];
+    case "DELETEALL":
+      console.log("delete", action);
+      return [...state.queue = []];
+
+
+      //return [...state.filter(queue => queue.id !== action.id)];
     default:
       return state;
   }
@@ -79,6 +84,15 @@ const App = () => {
     [dispatch]
   );
 
+  const removeAll = useCallback(
+    movieId =>
+      dispatch({
+        type: "DELETEALL",
+      }),
+    [dispatch]
+  );
+
+
   // useEffect allows a component to perform a side effect, in realtion to
   // variables withing the scope changing, such as props. In this case, when
   // the component is first added to the DOM, we make a service call to fetch
@@ -103,11 +117,15 @@ const App = () => {
     <Fragment>
       <Header />
       <Flex layout="row">
-        <Movies movies={movies} addToQueue={addToQueue} />
+        <Movies 
+          movies={movies} 
+          addToQueue={addToQueue} 
+          />
         <Queue
           movies={movies}
           queue={queue}
           removeFromQueue={removeFromQueue}
+          removeAll={removeAll}
         />
       </Flex>
       <DisclaimerFooter />
