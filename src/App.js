@@ -5,6 +5,7 @@ import React, {
   useReducer,
   useCallback
 } from "react";
+import 'babel-polyfill';
 import ReactDom from "react-dom";
 import shortId from "shortid";
 import { Flex } from "react-flex-material";

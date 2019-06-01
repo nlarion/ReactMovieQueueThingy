@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@material-ui/core": "4.0.1",
+    "babel-polyfill": "^6.26.0",
     "material": "0.3.13",
     "prop-types": "15.7.2",
     "react": "16.8.6",
