@@ -1,2 +1,0 @@
-# ReactMovieQueueThingy
-Created with CodeSandbox
