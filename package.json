@@ -8,6 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
+    "@material-ui/core": "4.0.1",
     "material": "0.3.13",
     "prop-types": "15.7.2",
     "react": "16.8.6",

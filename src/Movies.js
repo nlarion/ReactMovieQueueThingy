@@ -4,16 +4,16 @@ import { Flex } from "react-flex-material";
 
 const Movies = ({ movies, addToQueue }) => (
   <Fragment>
-    <h1>Available Movies</h1>
+    <h1 flex>Available Movies</h1>
     <Flex layout layoutWrap className="movie__list">
       {movies &&
         movies.map(movie => (
           <Flex key={movie.id}>
             <img src={movie.poster} alt={movie.alt} />
-            {movie.id}
+            <div>{movie.title}</div>
             <button className="button" onClick={() => addToQueue(movie.id)}>
               {" "}
-              +
+              Add
             </button>
           </Flex>
         ))}

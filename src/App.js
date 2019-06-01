@@ -42,8 +42,9 @@ const queueReducer = (state, action) => {
     case "ADD":
       return [...state, { id: action.id, movieId: action.movieId }];
     case "DELETE":
-      console.log("delete", action.id);
-      return [...state, { id: action.id, movieId: action.movieId }];
+      console.log("delete", action);
+      //state.filter(comment => comment.id !== commentId);
+      return [...state.filter(queue => queue.id !== action.id)];
     default:
       return state;
   }
@@ -102,7 +103,11 @@ const App = () => {
       <Header />
       <Flex layout="row">
         <Movies movies={movies} addToQueue={addToQueue} />
-        <Queue queue={queue} removeFromQueue={removeFromQueue} />
+        <Queue
+          movies={movies}
+          queue={queue}
+          removeFromQueue={removeFromQueue}
+        />
       </Flex>
       <DisclaimerFooter />
     </Fragment>
