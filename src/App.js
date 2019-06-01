@@ -42,7 +42,7 @@ const queueReducer = (state, action) => {
     case "ADD":
       return [...state, { id: action.id, movieId: action.movieId }];
     case "DELETE":
-      console.log("delete");
+      console.log("delete", action.id);
       return [...state, { id: action.id, movieId: action.movieId }];
     default:
       return state;
@@ -72,8 +72,7 @@ const App = () => {
     movieId =>
       dispatch({
         type: "DELETE",
-        id: shortId.generate(),
-        movieId
+        id: movieId
       }),
     [dispatch]
   );

@@ -12,7 +12,10 @@ const Queue = ({ queue, removeFromQueue }) => (
       {queue.map(({ id, movieId }) => (
         <li key={id}>
           {id}-{movieId}
-          <button className="button" onClick={() => removeFromQueue(id)}>
+          <button
+            className="button"
+            onClick={() => removeFromQueue(id + "-" + movieId)}
+          >
             {" "}
             -
           </button>
